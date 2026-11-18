@@ -1,0 +1,41 @@
+Models in this directory are from Poly Haven (https://polyhaven.com),
+released under the Creative Commons CC0 1.0 Universal license:
+https://creativecommons.org/publicdomain/zero/1.0/
+
+CC0 places these in the public domain. No attribution is required;
+this file records provenance for future maintainers.
+
+They are photogrammetry-derived and were shipped at scan density
+(up to ~98,000 triangles each). Every one has been decimated to a
+game-appropriate budget and re-encoded (webp textures, quantized
+attributes, meshopt compression) by tools/fetch-polyhaven-models.mjs.
+The visible surface detail survives decimation because it lives in the
+normal map, not the silhouette.
+
+slug          <- polyhaven id                  role
+  boulder_a   <- namaqualand_boulder_02       rock
+  boulder_b   <- namaqualand_boulder_03       rock
+  boulder_c   <- namaqualand_boulder_04       rock
+  boulder_d   <- namaqualand_boulder_05       rock
+  boulder_e   <- boulder_01                   rock
+  rock_a      <- rock_07                      rock
+  rocks_a     <- namaqualand_rocks_01         rock
+  stones_a    <- namaqualand_stones_01        rock
+  deadtree_a  <- dead_tree_trunk              tree
+  deadtree_b  <- dead_tree_trunk_02           tree
+  deadtree_c  <- dead_quiver_trunk            tree
+  stump_a     <- tree_stump_01                tree
+  stump_b     <- tree_stump_02                tree
+  tree_a      <- quiver_tree_01               tree
+  tree_b      <- quiver_tree_02               tree
+  roots_a     <- root_cluster_01              debris
+  branches_a  <- dry_branches_medium_01       debris
+  debris_a    <- bark_debris_01               debris
+  shrub_a     <- shrub_02                     debris
+  shrub_b     <- shrub_03                     debris
+  cliff_a     <- namaqualand_cliff_01         landmark
+  firepit     <- stone_fire_pit               landmark
+  fort        <- modular_fort_01              landmark
+
+Regenerate with:  node tools/fetch-polyhaven-models.mjs [--force]
+Then re-embed:    node tools/embed-models.mjs

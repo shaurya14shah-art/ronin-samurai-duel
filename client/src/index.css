@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;500;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#journey-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    overflow-y: auto;
+    background: linear-gradient(90deg, rgba(19, 22, 18, .97), rgba(19, 22, 18, .77) 50%, rgba(19, 22, 18, .15));
+    color: #e3d5ba;
+    padding: clamp(28px, 7vw, 110px);
+    display: flex;
+    align-items: center;
+    font-family: Georgia, 'Noto Serif JP', serif;
+}
+#journey-menu[hidden] { display: none; }
+.journey-copy { max-width: 760px; }
+.eyebrow { font: 11px monospace; letter-spacing: .3em; color: #ba9b73; }
+#journey-menu h1 { font-size: clamp(64px, 9vw, 130px); font-weight: 400; line-height: 1.2; letter-spacing: .08em; margin: 16px 0; }
+#journey-menu h1 span { display: inline-block; font-size: 32px; color: #a7644a; margin-left: 24px; vertical-align: middle; }
+.journey-subtitle { font-size: clamp(18px, 2vw, 26px); font-style: italic; }
+.journey-description { font-size: 14px; line-height: 1.9; color: #b5b09e; margin: 22px 0; }
+#begin-journey { padding: 16px 32px; margin: 12px 0 22px; border: 1px solid #a7855c; background: #a7855c; color: #171b16; font: 16px Georgia; cursor: pointer; }
+#begin-journey:hover { background: #cfb88f; }
+#begin-journey:disabled { opacity: .5; cursor: wait; }
+#begin-journey:focus-visible { outline: 2px solid #eee2ca; outline-offset: 5px; }
+.journey-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px; font: 11px monospace; color: #b5b09e; }
+.journey-controls b { color: #e3d5ba; font-weight: 400; }
+.journey-note { margin-top: 28px; font: 10px monospace; letter-spacing: .08em; color: #979885; }
+#journey-error { color: #db9c7d; font: 12px monospace; }
+@media (max-width: 640px) { .journey-controls { grid-template-columns: 1fr; } #journey-menu { align-items: flex-start; } }
+
+
+/* Forge UI Specific Resets / Custom Styles */
+#react-forge-root {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+#react-forge-root > * {
+    pointer-events: auto;
+}
+
+/* Forge Palette & Typography Utilities */
+.font-display { font-family: "Cinzel", "Trajan Pro", Georgia, serif !important; }
+.font-body { font-family: "Cormorant Garamond", Georgia, serif !important; }
+.font-mono { font-family: "JetBrains Mono", ui-monospace, monospace !important; }
+
+.text-flare { color: #ffc46b !important; }
+.text-ember { color: #ff8a3d !important; }
+.text-parch { color: #e8d7b5 !important; }
+.text-rust { color: #7a4326 !important; }
+.text-ink { color: #0b0705 !important; }
+.text-iron { color: #2a201a !important; }
+.text-steel { color: #cfd6de !important; }
+
+.text-flare\/40 { color: rgba(255, 196, 107, 0.4) !important; }
+.text-flare\/50 { color: rgba(255, 196, 107, 0.5) !important; }
+.text-flare\/60 { color: rgba(255, 196, 107, 0.6) !important; }
+.text-flare\/70 { color: rgba(255, 196, 107, 0.7) !important; }
+.text-flare\/80 { color: rgba(255, 196, 107, 0.8) !important; }
+.text-flare\/90 { color: rgba(255, 196, 107, 0.9) !important; }
+
+.text-parch\/25 { color: rgba(232, 215, 181, 0.25) !important; }
+.text-parch\/35 { color: rgba(232, 215, 181, 0.35) !important; }
+.text-parch\/40 { color: rgba(232, 215, 181, 0.4) !important; }
+.text-parch\/60 { color: rgba(232, 215, 181, 0.6) !important; }
+.text-parch\/70 { color: rgba(232, 215, 181, 0.7) !important; }
+
+.bg-ink { background-color: #0b0705; }
+.bg-char { background-color: #17100c; }
+.bg-iron { background-color: #2a201a; }
+.bg-rust { background-color: #7a4326; }
+.bg-ember { background-color: #ff8a3d; }
+.bg-flare { background-color: #ffc46b; }
+.bg-parch { background-color: #e8d7b5; }
+
+.bg-ember\/10 { background-color: rgba(255, 138, 61, 0.1); }
+.bg-ember\/15 { background-color: rgba(255, 138, 61, 0.15); }
+.bg-ember\/25 { background-color: rgba(255, 138, 61, 0.25); }
+
+.border-flare { border-color: #ffc46b; }
+.border-ember { border-color: #ff8a3d; }
+.border-rust { border-color: #7a4326; }
+.border-iron { border-color: #2a201a; }
+.border-parch { border-color: #e8d7b5; }
+
+.border-rust\/20 { border-color: rgba(122, 67, 38, 0.2); }
+.border-rust\/25 { border-color: rgba(122, 67, 38, 0.25); }
+.border-rust\/30 { border-color: rgba(122, 67, 38, 0.3); }
+.border-rust\/40 { border-color: rgba(122, 67, 38, 0.4); }
+.border-rust\/60 { border-color: rgba(122, 67, 38, 0.6); }
+
+.border-flare\/40 { border-color: rgba(255, 196, 107, 0.4); }
+.border-flare\/50 { border-color: rgba(255, 196, 107, 0.5); }
+.border-flare\/70 { border-color: rgba(255, 196, 107, 0.7); }
+.border-flare\/80 { border-color: rgba(255, 196, 107, 0.8); }
+.border-ember\/60 { border-color: rgba(255, 138, 61, 0.6); }
+
+/* GLM Forge Visual Styles & Keyframe Animations */
+.panel {
+  background:
+    linear-gradient(180deg, rgba(48, 32, 22, 0.86), rgba(14, 9, 7, 0.92)),
+    radial-gradient(120% 90% at 20% 0%, rgba(255, 138, 61, 0.09), transparent 60%);
+  border: 1px solid rgba(190, 126, 66, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 196, 107, 0.14),
+    inset 0 -20px 40px rgba(0, 0, 0, 0.55),
+    0 20px 50px rgba(0, 0, 0, 0.6);
+}
+.panel-h {
+  background: linear-gradient(180deg, rgba(122, 67, 38, 0.5), rgba(40, 24, 15, 0.4));
+  border-bottom: 1px solid rgba(190, 126, 66, 0.3);
+}
+.rivet {
+  background: radial-gradient(circle at 35% 30%, #d8a877, #6b4526 60%, #2a1a10);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.engraved {
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.9),
+    0 -1px 0 rgba(255, 210, 150, 0.12);
+}
+.glow-ember {
+  text-shadow: 0 0 12px rgba(255, 138, 61, 0.75), 0 0 34px rgba(255, 90, 20, 0.4);
+}
+.tracking-widest2 {
+  letter-spacing: 0.34em;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  30% { opacity: 1; transform: scale(1.04) translateY(-1px); }
+  60% { opacity: 0.7; transform: scale(0.98); }
+}
+.anim-flicker { animation: flicker 1.6s ease-in-out infinite; }
+
+@keyframes riseFade {
+  0% { opacity: 0; transform: translateY(14px) scale(0.96); }
+  100% { opacity: 1; transform: none; }
+}
+.anim-in { animation: riseFade 0.45s cubic-bezier(0.2, 0.9, 0.2, 1) both; }
+
+@keyframes popUp {
+  0% { opacity: 0; transform: translateY(0) scale(0.7); }
+  25% { opacity: 1; transform: translateY(-10px) scale(1.1); }
+  100% { opacity: 0; transform: translateY(-46px) scale(1); }
+}
+.anim-pop { animation: popUp 1.1s ease-out forwards; }
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-4px, 3px); }
+  40% { transform: translate(5px, -2px); }
+  60% { transform: translate(-3px, -3px); }
+  80% { transform: translate(2px, 2px); }
+  100% { transform: translate(0, 0); }
+}
+.anim-shake { animation: shake 0.22s linear; }
+
+@keyframes sweep {
+  0% { transform: translateX(-130%) skewX(-18deg); }
+  100% { transform: translateX(230%) skewX(-18deg); }
+}
+.anim-sweep { animation: sweep 2.6s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+.anim-breathe { animation: breathe 1.8s ease-in-out infinite; }
+
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+.anim-spin-slow { animation: spinSlow 14s linear infinite; }
+
+@keyframes hammerHit {
+  0% { transform: rotate(-58deg) translate(0, 0); }
+  35% { transform: rotate(16deg) translate(6px, 10px); }
+  55% { transform: rotate(10deg) translate(4px, 8px); }
+  100% { transform: rotate(-58deg) translate(0, 0); }
+}
+.anim-hit { animation: hammerHit 0.34s cubic-bezier(0.3, 1.6, 0.5, 1); }
+
+@keyframes pulseRing {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.1); opacity: 0; }
+}
+.anim-ring { animation: pulseRing 0.6s ease-out forwards; }
+
+@keyframes flash {
+  0% { opacity: 0.85; }
+  100% { opacity: 0; }
+}
+.anim-flash { animation: flash 0.35s ease-out forwards; }
+

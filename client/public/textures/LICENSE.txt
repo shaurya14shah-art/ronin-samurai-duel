@@ -1,0 +1,26 @@
+PBR material sets in this directory are from ambientCG (https://ambientcg.com),
+released under the Creative Commons CC0 1.0 Universal license:
+https://creativecommons.org/publicdomain/zero/1.0/
+
+CC0 places these in the public domain. No attribution is required; this
+file exists to record provenance for future maintainers.
+
+Sets used (slug <- ambientCG asset id):
+  rock        <- Rock030          cliff / stone terrain detail
+  dirt        <- Ground037        bare soil, the default ground detail
+  grass       <- Grass004         vegetated ground (plains, jungle, swamp)
+  snow        <- Snow006          frozen tundra / celestial peaks
+  sand        <- Ground054        desert ruins
+  ash         <- Ground041        volcanic / obsidian wastes
+  wood        <- Wood062          planks, crates, stalls, shrine timber
+  metal       <- Metal032         tarnished iron — armory, smithy, weapons
+  stonewall   <- PavingStones131  ruin masonry, monoliths
+  fabric      <- Fabric063        tents, banners, robes
+
+Each folder keeps only the four maps Three.js consumes:
+  color.jpg      -> map            (sRGB)
+  normal.jpg     -> normalMap      (linear, OpenGL +Y convention)
+  roughness.jpg  -> roughnessMap   (linear)
+  ao.jpg         -> aoMap          (linear, needs uv2 — MaterialLibrary sets it)
+
+Regenerate with:  node tools/fetch-hd-textures.mjs [--force] [--res 2048]
